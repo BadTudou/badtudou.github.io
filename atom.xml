@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>/Users/bluemoon/Documents/Gridea/output</id>
+    <title>杜小豆的编程小道</title>
+    <updated>2019-05-31T08:46:14.762Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="/Users/bluemoon/Documents/Gridea/output"/>
+    <link rel="self" href="/Users/bluemoon/Documents/Gridea/output/atom.xml"/>
+    <subtitle>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;生命，宇宙，以及一切的答案&lt;br/&gt;
+Answer to Life, the Universe, and Everything</subtitle>
+    <logo>/Users/bluemoon/Documents/Gridea/output/images/avatar.png</logo>
+    <icon>/Users/bluemoon/Documents/Gridea/output/favicon.ico</icon>
+    <rights>All rights reserved 2019, 杜小豆的编程小道</rights>
+</feed>
