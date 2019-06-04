@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | 杜小豆的编程小道</title>
+<title>一个开发者的Mac工具箱 | 杜小豆的编程小道</title>
 <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;生命，宇宙，以及一切的答案&lt;br/&gt;
 Answer to Life, the Universe, and Everything">
 
@@ -100,21 +100,58 @@ Answer to Life, the Universe, and Everything
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">一个开发者的Mac工具箱</h2>
+            <div class="post-date">2019-05-31</div>
+            
+              <div class="feature-container" style="background-image: url('https://duxiaodou.github.io/post-images/developer-mac-app.png')">
+              </div>
             
             <div class="post-content">
-              <p>杜小豆(BadTudou)</p>
-<p>IT男，程序员，技术型工作者。</p>
+              <p>Mac应用推荐</p>
+<!-- more -->
+<h1 id="软件管理">软件管理</h1>
+<h2 id="homebrew">Homebrew</h2>
+<p><img src="https://duxiaodou.github.io/post-images/1559296171286.png" alt=""></p>
 <blockquote>
-<p>生命，宇宙，以及一切的答案</p>
+<p>Homebrew — The missing package manager for macOS</p>
 </blockquote>
-<blockquote>
-<p>Answer to Life, the Universe, and Everything</p>
-</blockquote>
-<p>让我们的思想自由恋爱吧！</p>
+<p><strong>Homebrew</strong>是命令行版本的软件管家，通过几个简单的命令，你就可以轻松完成软件的搜索、安装、升级以及卸载。</p>
+<h3 id="安装homebrew">安装Homebrew</h3>
+<p><code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+<h3 id="使用">使用</h3>
+<p><strong>Homebrew</strong>针对软件的用法是：<code>brew 动作 [软件名]</code></p>
+<p>其中<strong>动作</strong>包含了<strong>搜索</strong>(search) 、<strong>查看</strong>(info) 、<strong>安装</strong>(install) 、<strong>更新</strong>(upgrade) 、<strong>卸载</strong>(uninstall / remove / rm) 、<strong>列举</strong>(list) 。</p>
+<p><strong>Homebrew</strong>中的软件分为<strong>普通软件</strong>与<strong>cask软件</strong>，<strong>cask软件</strong>通常指<strong>macOS</strong>上的app、字体、插件或者其他不开源的软件。<strong>普通软件</strong>使用普通的<code>brew</code>命令即可，<strong>cask软件</strong>则需要使用<code>brew cask</code> 命令。</p>
+<h4 id="搜索">搜索</h4>
+<p><code>brew search 软件名</code></p>
+<p>搜索结果中的<strong>Formulae</strong>部分为<strong>普通软件</strong>，<strong>Casks</strong>部分为<strong>cask软件</strong>。</p>
+<p>已安装的软件名称后面会有<code>✔</code>标识。</p>
+<h4 id="查看">查看</h4>
+<p><code>brew info 软件名</code></p>
+<p>查看软件信息时，会优先选择<strong>普通软件</strong>，若<strong>普通软件</strong>不存在，则会自动选择<strong>cask软件</strong>。</p>
+<p>也可以通过<code>brew cask info 软件名</code>命令显式查看<strong>cask软件</strong>的信息。</p>
+<h4 id="安装">安装</h4>
+<p><code>brew install 软件名</code> 安装<strong>普通软件</strong>。</p>
+<p><code>brew cask install 软件名</code> 安装<strong>cask软件</strong>。</p>
+<h4 id="更新">更新</h4>
+<p><code>brew update</code> 更新<strong>普通软件</strong>与<strong>Homebrew</strong>本身。</p>
+<p><code>brew upgrade 软件名</code> 更新指定的软件。</p>
+<h4 id="卸载">卸载</h4>
+<p><code>brew uninstall 软件名</code></p>
+<p>除了<strong>uninstall</strong> ，也可以使用<strong>remove</strong>或<strong>rm</strong>。</p>
+<h4 id="列举">列举</h4>
+<p><code>brew list</code></p>
+<p>此命令会列举出所有通过<strong>Homebrew</strong>安装的软件，可以配合<strong>管道</strong>与<strong>grep</strong>命令来检测是否通过<strong>Homebrew</strong>安装了某软件。</p>
 
             </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://duxiaodou.github.io/tag/JnRnxQKUr" class="tag">
+                    mac
+                  </a>
+                
+              </div>
             
             
 
