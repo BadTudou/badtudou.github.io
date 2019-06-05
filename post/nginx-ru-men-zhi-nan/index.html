@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Nginx入门指南 | 杜小豆的编程小道</title>
+<meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;生命，宇宙，以及一切的答案&lt;br/&gt;
+Answer to Life, the Universe, and Everything">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://duxiaodou.github.io/favicon.ico?v=1559719046748">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://duxiaodou.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://duxiaodou.github.io">
+        <img src="https://duxiaodou.github.io/images/avatar.png?v=1559719046748" class="site-logo">
+        <h1 class="site-title">杜小豆的编程小道</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生命，宇宙，以及一切的答案<br/>
+Answer to Life, the Universe, and Everything
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://duxiaodou.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Nginx入门指南</h2>
+            <div class="post-date">2019-06-05</div>
+            
+              <div class="feature-container" style="background-image: url('https://duxiaodou.github.io/post-images/nginx-ru-men-zhi-nan.png')">
+              </div>
+            
+            <div class="post-content">
+              <p>Nginx入门指南</p>
+<!-- more -->
+<p><a href="https://nginx.org/en/docs/beginners_guide.html">Nginx - Beginner’s Guide</a></p>
+<h1 id="基础">基础</h1>
+<p>Nginx的配置文件是 <em>nginx.conf</em>，默认位于 <em>/usr/local/nginx.conf</em>、<em>/etc/nginx</em>或者 <em>/usr/local/etc/nginx</em>。</p>
+<h2 id="启动-控制">启动 &amp;&amp; 控制</h2>
+<p>通过执行nginx来启动，启动后通过<code>nginx -s 信号</code>来控制。信号包括以下：</p>
+<ul>
+<li>stop 快速停止</li>
+<li>quit 优雅停止(等待工作进程完成当前请求后再停止)</li>
+<li>reload 重现加载配置文件(更改nginx的配置后不会立即生效，需要使用reload命令或者等待重新运行nginx)</li>
+<li>reopen 重新打开日志文件</li>
+</ul>
+<p>应用新的配置信息时，主进程检查配置的有效性，然后并尝试应用。完成后，主进程允许新的工作进程，并且发送消息给旧的工作进程让其关闭。否则，主进程将回滚改动并依据旧的配置进行工作。</p>
+<p>旧的工作进程收到关闭命令后，不再接受新的连接，并继续服务当前请求，待所有请求都服务完后，旧的工作进程退出。</p>
+<p>也可通过<strong>kill</strong>将信号发送给<strong>Nginx</strong>进程。</p>
+<h2 id="配置文件结构">配置文件结构</h2>
+<p><strong>Nginx</strong>由配置文件中指定的指令控制的模块组成，指令分为<strong>简单指令</strong>和<strong>块指令</strong>。简单指令由
+<code>名称 参数;</code>构成，块指令的的结构与简单指令类似，但是它以<code>{}</code>结束。</p>
+<p>如果一个<strong>块指令</strong>在大括号中可以有其他指令，那么它被称为<strong>上下文</strong>。</p>
+<p>没有放置在任何上下文之中的指令被认为是放在<strong>main</strong>上下文中，<strong>events</strong>和<strong>http</strong>指令在<strong>main</strong>上下文中，<strong>server</strong>在<strong>http</strong>中，<strong>location</strong>在<strong>server</strong>中。</p>
+<p><strong>#</strong> 之后的内容即为注释。</p>
+<h2 id="服务静态内容">服务静态内容</h2>
+<p>配置文件可以包含多个<strong>server</strong>块，不同的<strong>server</strong>通过监听的端口和<strong>sever</strong>名称来区分。一旦<strong>Nginx</strong>决定了哪一个<strong>server</strong>处理请求，它根据<strong>server</strong>内的<strong>location</strong>指令参数测试<strong>uri</strong>。</p>
+<p>对于匹配的请求，<strong>uri</strong>被添加到根指令中指定的路径。如果有多个匹配的<strong>location</strong>块，优先选择前缀最长的那个。</p>
+<h2 id="日志">日志</h2>
+<p><strong>Nginx</strong>的日志文件默认位于 <em>/usr/local/nginx/logs</em> 或者 <em>/var/log/nginx</em>，包含了<em>access.log</em>和<em>error.log</em>。</p>
+<h2 id="设置简单的代理服务器">设置简单的代理服务器</h2>
+<p>代理服务器，这意味着服务器接收请求，将请求传递给代理服务器，从请求中检索响应，并将其发送给客户端。</p>
+<p>代理指令是<strong>proxy_pass</strong>。</p>
+<p><strong>Nginx</strong>选择一个<strong>location</strong>为请求服务时，首先检查指定前缀的l<strong>ocation</strong>指令，并优先选择前缀最长的<strong>location</strong>，之后再检测正则表达式。如果匹配到了正则表达式，<strong>Nginx</strong>选择它的<strong>location</strong>，否则，选择之前记住的<strong>location</strong>。</p>
+<h2 id="设置fastcgi代理">设置FastCGI代理</h2>
+<p><strong>Nginx</strong>可用于将请求路由到<strong>FastCGI</strong>服务器。</p>
+<p><strong>FastCGI</strong>指令是<strong>fastcgi_pass</strong>，<strong>fastcgi_param</strong>指令用于设置传递给<strong>FastCGI</strong>服务器的参数。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://duxiaodou.github.io/tag/BGaqBTqEQ" class="tag">
+                    nginx
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://duxiaodou.github.io/post/developer-mac-app">
+                  <h3 class="post-title">
+                    一个开发者的Mac工具箱
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '89453bcaab60298cbe62',
+        clientSecret: '49644b2cb3ba4e2aca5f850cbf56dc47188f8534',
+        repo: 'blog-discuss',
+        owner: 'duxiaodou',
+        admin: ['duxiaodou'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
