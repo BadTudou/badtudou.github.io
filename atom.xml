@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://duxiaodou.github.io</id>
     <title>杜小豆的编程小道</title>
-    <updated>2019-06-11T05:01:40.981Z</updated>
+    <updated>2019-06-13T10:01:27.601Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://duxiaodou.github.io"/>
     <link rel="self" href="https://duxiaodou.github.io/atom.xml"/>
@@ -11,6 +11,32 @@ Answer to Life, the Universe, and Everything</subtitle>
     <logo>https://duxiaodou.github.io/images/avatar.png</logo>
     <icon>https://duxiaodou.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 杜小豆的编程小道</rights>
+    <entry>
+        <title type="html"><![CDATA[常见数据类型的结构图(ASCII)]]></title>
+        <id>https://duxiaodou.github.io/post/chang-jian-shu-ju-jie-gou-de-ascii-tu</id>
+        <link href="https://duxiaodou.github.io/post/chang-jian-shu-ju-jie-gou-de-ascii-tu">
+        </link>
+        <updated>2019-06-13T09:56:35.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="链表">链表</h1>
+<h2 id="单链表">单链表</h2>
+<pre><code>	+--------------+---+
+	|      data    | * |
+	+--------------+-┼-+
+					 |
+					 |
+					 |
+			+--------V-----+---+
+			|      data    | * |
+			+--------------+-┼-+
+							 |
+							 |
+							 |
+					+--------V-----+---+
+					|      data    | Ø |
+					+--------------+---+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Nginx高级指南]]></title>
         <id>https://duxiaodou.github.io/post/nginx-gao-ji-zhi-nan</id>
